@@ -3,15 +3,15 @@ import base64
 import os
 import csv
 
-image_folder: str = 'images'
+image_folder: str = 'dataset/images'
 
 # CSV file containing descriptions
-csv_file = 'descriptions.csv'
+csv_file = 'dataset/dataset.csv'
 
 # Read description from CSV file
 with open(csv_file, 'r') as file:
     reader = csv.DictReader(file)
-    descriptions = {row['filename']: row['description'] for row in reader}
+    descriptions = {row['image']: row['text'] for row in reader}
 
 # List to hold encoded images
 encoded_images = []
@@ -34,5 +34,5 @@ data = {
 }
 
 # Write data to JSON file
-with open('solution_diagram.json', 'w') as json_file:
+with open('dataset/solution_diagram.json', 'w') as json_file:
     json.dump(data, json_file, indent=4)
